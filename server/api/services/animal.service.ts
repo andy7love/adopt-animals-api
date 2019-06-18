@@ -18,7 +18,7 @@ export class AnimalService {
     L.info(`create animal with name ${animal.name}`);
     const newAnimal: IAnimal = {
       id: getNextId(),
-      name: animal.name,
+      name: (animal.name) ? animal.name : null,
       birthdate: new Date(animal.birthdate),
       breed: animal.breed,
       gender: animal.gender,
