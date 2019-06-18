@@ -18,7 +18,21 @@ export class AnimalService {
     L.info(`create animal with name ${animal.name}`);
     const newAnimal: IAnimal = {
       id: getNextId(),
-      name: animal.name
+      name: animal.name,
+      birthdate: new Date(animal.birthdate),
+      breed: animal.breed,
+      gender: animal.gender,
+      type: animal.type,
+      image: (animal.image) ? animal.image : null,
+      eyesColor: animal.eyesColor,
+      peltColor: animal.peltColor,
+      zone: animal.zone,
+      description: animal.description,
+      contact: {
+        email: animal.contact.email,
+        name: animal.contact.name,
+        phone: animal.contact.phone
+      }
     };
     animalsRepository.push(newAnimal)
     return Promise.resolve(newAnimal);

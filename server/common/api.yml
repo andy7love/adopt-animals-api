@@ -22,9 +22,66 @@ definitions:
     title: Animal
     required:
       - name
+      - type
+      - gender
+      - breed
+      - birthdate
+      - zone
+      - peltColor
+      - eyesColor
+      - description
+      - contact
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+        example: 'Pepe'
+      image:
+        type: file
+      type:
+        type: string
+        example: 'dog'
+      gender:
+        type: string
+        example: 'male'
+      breed:
+        type: string
+        example: 'Akita'
+      birthdate:
+        type: "string"
+        format: "date-time"
+      zone:
+        type: string
+        example: 'Buceo'
+      peltColor:
+        type: string
+        example: 'Gris'
+      eyesColor:
+        type: string
+        example: 'Negro'
+      description:
+        type: string
+        example: 'Divertido, mimoso y bueno.'
+      contact:
+        $ref: "#/definitions/Contact"
+  Contact:
+    type: object
+    title: Contact
+    required:
+      - name
+      - email
+      - phone
     properties:
       name:
         type: string
+        example: 'John Doe'
+      email:
+        type: string
+        example: 'john.doe@gmail.com'
+      phone:
+        type: string
+        example: '+598 094135268'
 
 paths:
   /animal:
@@ -34,6 +91,8 @@ paths:
       description: Fetch all animals
       responses:
         200:
+          schema: 
+            $ref: "#/definitions/Animal"
           description: Returns all animals
     post:
       tags:
@@ -42,18 +101,21 @@ paths:
       parameters:
         - name: Animal
           in: body
-          description: an animal
+          description: new animal information
           required: true
           schema: 
             $ref: "#/definitions/Animal"
       responses:
         200:
           description: Returns new created animal
+        400:
+          description: Invalid input
 
   /animal/{id}:
     get:
       tags:
         - Animals
+      description: Retrieves a specific animal by id
       parameters:
         - name: id
           in: path
@@ -62,7 +124,53 @@ paths:
           type: integer
       responses:
         200:
-          description: Return the animal with the specified id
+          schema: 
+            $ref: "#/definitions/Animal"
+          description: Returns the animal with the specified id
+        400:
+          description: Invalid ID supplied
+        404:
+          description: Animal not found
+    put:
+      tags:
+        - Animals
+      description: Updates a specific animal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the animal to retrieve
+          type: integer
+        - name: Animal
+          in: body
+          description: updated animal information
+          required: true
+          schema: 
+            $ref: "#/definitions/Animal"
+      responses:
+        200:
+          schema: 
+            $ref: "#/definitions/Animal"
+          description: Returns the updated animal
+        400:
+          description: Invalid input
+        404:
+          description: Animal not found
+    delete:
+      tags:
+        - Animals
+      description: Deletes an animal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the animal to delete
+          type: integer
+      responses:
+        200:
+          description: Animal deleted
+        400:
+          description: Invalid ID supplied
         404:
           description: Animal not found
 
