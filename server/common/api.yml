@@ -1,0 +1,75 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: adopt-animals-api
+  description: Adopt Animals REST API
+basePath: /api/v1
+tags:
+  - name: Animals
+    description: Endpoints for retrieving animals data
+  - name: Specification
+    description: The swagger API specification
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+
+definitions:
+  Animal:
+    type: object
+    title: Animal
+    required:
+      - name
+    properties:
+      name:
+        type: string
+
+paths:
+  /animal:
+    get:
+      tags:
+        - Animals
+      description: Fetch all animals
+      responses:
+        200:
+          description: Returns all animals
+    post:
+      tags:
+        - Animals
+      description: Create a new animal for adopt
+      parameters:
+        - name: Animal
+          in: body
+          description: an animal
+          required: true
+          schema: 
+            $ref: "#/definitions/Animal"
+      responses:
+        200:
+          description: Returns new created animal
+
+  /animal/{id}:
+    get:
+      tags:
+        - Animals
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the animal to retrieve
+          type: integer
+      responses:
+        200:
+          description: Return the animal with the specified id
+        404:
+          description: Animal not found
+
+  /spec:
+    get:
+      tags:
+        - Specification
+      responses:
+        200:
+          description: Return the API specification
