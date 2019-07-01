@@ -40,7 +40,9 @@ definitions:
         nullable: true
         example: 'Pepe'
       image:
-        type: file
+        type: string
+        example: 'assets/dog.jpg'
+        readOnly: true
       type:
         type: string
         example: 'dog'
@@ -117,7 +119,7 @@ paths:
           required: false
           type: "file"
       responses:
-        200:
+        201:
           description: Returns new created animal
         400:
           description: Invalid input
@@ -155,11 +157,11 @@ paths:
         - name: Animal
           in: body
           description: updated animal information
-          required: true
+          required: false
           schema: 
             $ref: "#/definitions/Animal"
       responses:
-        200:
+        202:
           schema: 
             $ref: "#/definitions/Animal"
           description: Returns the updated animal
@@ -178,7 +180,7 @@ paths:
           description: The id of the animal to delete
           type: integer
       responses:
-        200:
+        204:
           description: Animal deleted
         400:
           description: Invalid ID supplied

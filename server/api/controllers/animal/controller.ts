@@ -13,13 +13,44 @@ export class Controller {
     });
   }
 
+  delete(req: Request, res: Response): void {
+    AnimalService.delete(parseInt(req.params.id))
+      .then(r => {
+        res
+          .status(204)
+          .json(r)
+      })
+      .catch(r =>
+        res
+          .status(404)
+      )
+  }
+
+  edit(req: Request, res: Response): void {
+    AnimalService.edit(parseInt(req.params.id), req.body)
+      .then(r =>
+        res
+          .status(202)
+          .location(`/api/v1/animal/${r.id}`)
+          .json(r)
+      )
+      .catch(r =>
+        res
+          .status(404)
+      )
+  }
+
   create(req: Request, res: Response): void {
-    AnimalService.create(req.body).then(r =>
-      res
-        .status(201)
-        .location(`/api/v1/animal/${r.id}`)
-        .json(r),
-    );
+    AnimalService.create(req.body)
+      .then(r =>
+        res
+          .status(201)
+          .location(`/api/v1/animal/${r.id}`)
+          .json(r)
+      ).catch(r =>
+        res
+          .status(404)
+      )
   }
 }
 

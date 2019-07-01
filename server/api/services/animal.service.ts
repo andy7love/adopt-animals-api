@@ -14,6 +14,32 @@ export class AnimalService {
     return Promise.resolve(animalsRepository.find(a => a.id === id));
   }
 
+  delete(id: number): Promise<void> {
+    L.info(`delete animal with id ${id}`);
+    const index = animalsRepository.findIndex(animal => animal.id === id);
+    if (index === -1) {
+      return Promise.reject('Invalid animal id');
+    } else {
+      animalsRepository.splice(index, 1);
+      return Promise.resolve();
+    }
+  }
+
+  edit(id: number, data: Partial<IAnimal>): Promise<Partial<IAnimal>> {
+    L.info(`edit animal with id ${id}`);
+    const index = animalsRepository.findIndex(animal => animal.id === id);
+    if (index === -1) {
+      return Promise.reject('Invalid animal id');
+    } else {
+      const animal = animalsRepository[index];
+      animalsRepository[index] = {
+        ...animal,
+        ...data
+      };
+      return Promise.resolve(animalsRepository[index]);
+    }
+  }
+
   create(animal: Omit<IAnimal, 'id'>): Promise<IAnimal> {
     L.info(`create animal with name ${animal.name}`);
     const newAnimal: IAnimal = {
