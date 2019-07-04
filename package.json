@@ -15,6 +15,7 @@
     "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "pino": "^5.11.1",
@@ -37,5 +38,5 @@
     "tslint": "^5.13.1",
     "typescript": "^3.4.5"
   },
-  "author": "Carmine DiMascio <cdimascio@gmail.com> (https://github.com/cdimascio)"
+  "author": "Andres Amor <andy.7love@gmail.com> (https://github.com/andy7love)"
 }

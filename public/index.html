@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>adopt-animals-api</title>
 </head>
+
 <body>
-<h1>Welcome to adopt-animals-api</h1>
-<ul>
-    <li><h3><a href="/api-explorer/">Interactive API Doc!</a></h3></li>
-</ul>
+    <h1>Welcome to adopt-animals-api</h1>
+    <ul>
+        <li>
+            <h3><a href="/api-explorer/">Interactive API Doc!</a></h3>
+        </li>
+    </ul>
+
+    <br />
+    <br />
+    <br />
+    <h3>Animals List</h3>
+    <div id="animals-list">Loading animals....</div>
+
+    <script>
+        fetch('http://localhost:3000/api/v1/animal')
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (animals) {
+                var animalCards = animals.map(item => '<li>' + item.name + '</li>');
+                document.querySelector('#animals-list').innerHTML = animalCards;
+            });
+    </script>
 </body>
+
 </html>

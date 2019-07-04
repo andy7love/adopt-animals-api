@@ -1,9 +1,12 @@
 import AnimalService from '../../services/animal.service';
 import { Request, Response } from 'express';
+import delay from '../../../../tools/delay';
 
 export class Controller {
   all(req: Request, res: Response): void {
-    AnimalService.all().then(r => res.json(r));
+    delay(2000).then(() => {
+      AnimalService.all().then(r => res.json(r));
+    });
   }
 
   byId(req: Request, res: Response): void {

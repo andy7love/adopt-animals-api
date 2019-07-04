@@ -49,7 +49,6 @@ export class AnimalService {
       breed: animal.breed,
       gender: animal.gender,
       type: animal.type,
-      image: (animal.image) ? animal.image : null,
       eyesColor: animal.eyesColor,
       peltColor: animal.peltColor,
       zone: animal.zone,

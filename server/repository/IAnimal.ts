@@ -19,7 +19,6 @@ export interface IAnimalContact {
 export interface IAnimal {
     id: number;
     name?: string;
-    image?: string;
     type: AnimalType;
     gender: AnimalGender;
     breed: string;

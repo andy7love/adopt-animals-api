@@ -20,7 +20,6 @@ const animalsRepository: Array<IAnimal> = [
     zone: 'Aguada',
     eyesColor: 'Marron',
     peltColor: 'Negro',
-    image: 'morena.png',
     description: 'Fue encontrada por la calle arenal grande esquina martin garcia, busque al posible dueño y no lo encontre al parecer era callejera, y bueno no puedo hacerme cargo por mucho tiempo mas, ya tengo otra mascota',
     contact: {
       name: 'Brian Acosta',
