@@ -18,17 +18,49 @@
     <br />
     <br />
     <h3>Animals List</h3>
-    <div id="animals-list">Loading animals....</div>
+    <div id="animals-list"></div>
 
     <script>
-        fetch('http://localhost:3000/api/v1/animal')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (animals) {
-                var animalCards = animals.map(item => '<li>' + item.name + '</li>');
-                document.querySelector('#animals-list').innerHTML = animalCards;
-            });
+        function loadAnimals() {
+            document.querySelector('#animals-list').innerHTML = 'Loading animals...';
+            fetch('http://localhost:3000/api/v1/animal')
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (animals) {
+                    var animalCards = animals.map(item => '<li>' + item.name + '</li>').join('');
+                    document.querySelector('#animals-list').innerHTML = animalCards;
+                });
+        }
+
+        loadAnimals();
+
+        function addAnimal() {
+            var data = {
+                name: "Pepe",
+                type: "dog",
+                gender: "male",
+                breed: "Akita",
+                birthdate: "2019-07-04",
+                zone: "Buceo",
+                peltColor: "Gris",
+                eyesColor: "Negro",
+                description: "Divertido, mimoso y bueno.",
+                contact: {
+                    name: "John Doe",
+                    email: "john.doe@gmail.com",
+                    phone: "+598 094135268"
+                }
+            };
+
+            fetch('http://localhost:3000/api/v1/animal', {
+                method: 'POST',
+                body: JSON.stringify(data), // JS object converted to string on JSON format.
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+        }
     </script>
 </body>
 
