@@ -34,7 +34,8 @@ export class AnimalService {
       const animal = animalsRepository[index];
       animalsRepository[index] = {
         ...animal,
-        ...data
+        ...data,
+        id
       };
       return Promise.resolve(animalsRepository[index]);
     }
