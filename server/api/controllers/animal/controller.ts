@@ -26,6 +26,7 @@ export class Controller {
       .catch(r =>
         res
           .status(404)
+          .end()
       )
   }
 
@@ -40,6 +41,7 @@ export class Controller {
       .catch(r =>
         res
           .status(404)
+          .end()
       )
   }
 
@@ -52,7 +54,8 @@ export class Controller {
           .json(r)
       ).catch(r =>
         res
-          .status(404)
+          .status(500)
+          .end()
       )
   }
 }

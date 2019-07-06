@@ -21,6 +21,7 @@ definitions:
     type: object
     title: Animal
     required:
+      - name
       - type
       - gender
       - breed
@@ -37,7 +38,6 @@ definitions:
         readOnly: true
       name:
         type: string
-        nullable: true
         example: 'Pepe'
       type:
         type: string
@@ -148,7 +148,7 @@ paths:
         - name: Animal
           in: body
           description: updated animal information
-          required: false
+          required: true
           schema: 
             $ref: "#/definitions/Animal"
       responses:
