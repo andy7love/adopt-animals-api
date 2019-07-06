@@ -21,9 +21,10 @@
     <div id="animals-list"></div>
 
     <script>
+        const apiUrl = 'http://localhost:8000/api/v1';
         function loadAnimals() {
             document.querySelector('#animals-list').innerHTML = 'Loading animals...';
-            fetch('http://localhost:3000/api/v1/animal')
+            fetch(apiUrl + '/animals')
                 .then(function (response) {
                     return response.json();
                 })
@@ -53,7 +54,7 @@
                 }
             };
 
-            fetch('http://localhost:3000/api/v1/animal', {
+            fetch(apiUrl + '/animals', {
                 method: 'POST',
                 body: JSON.stringify(data), // JS object converted to string on JSON format.
                 headers: {

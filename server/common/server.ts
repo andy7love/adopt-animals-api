@@ -15,7 +15,7 @@ export default class ExpressServer {
   constructor() {
     const root = path.normalize(__dirname + '/../..');
     app.set('appPath', root + 'client');
-    app.use(cors());
+    app.use(cors({ origin: true }));
     app.use(bodyParser.json({ limit: process.env.REQUEST_LIMIT || '10mb' }));
     app.use(bodyParser.urlencoded({ extended: true, limit: process.env.REQUEST_LIMIT || '10mb' }));
     app.use(cookieParser(process.env.SESSION_SECRET));
