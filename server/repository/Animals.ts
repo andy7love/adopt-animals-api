@@ -15,16 +15,16 @@ const animalsRepository: Array<IAnimal> = [
     name: 'Morena',
     type: AnimalType.Dog,
     gender: AnimalGender.Female,
-    birthdate: new Date('2018-06-14T00:00:00'),
+    birthdate: new Date('2018-06-14'),
     breed: 'Mestizo',
     zone: 'Aguada',
     eyesColor: 'Marron',
     peltColor: 'Negro',
     description: 'Fue encontrada por la calle arenal grande esquina martin garcia, busque al posible dueño y no lo encontre al parecer era callejera, y bueno no puedo hacerme cargo por mucho tiempo mas, ya tengo otra mascota',
     contact: {
-      name: 'Brian Acosta',
-      email: 'brianacostamartinez@gmail.com',
-      phone: '098 806 266'
+      name: 'Jorge Gonzales',
+      email: 'jorge.gonzales@gmail.com',
+      phone: '099 999 999'
     }
   }
 ];
