@@ -84,7 +84,7 @@ definitions:
         example: '+598 094135268'
 
 paths:
-  /animal:
+  /animals:
     get:
       tags:
         - Animals
@@ -115,7 +115,7 @@ paths:
         400:
           description: Invalid input
 
-  /animal/{id}:
+  /animals/{id}:
     get:
       tags:
         - Animals
